@@ -1,0 +1,22 @@
+{
+  "name": "techafrica",
+  "version": "1.0.0",
+  "description": "TechAfrica is an online community for organisations teaching coding + data science on the continent to share best practices and help develop the next generation of African tech talent. We host an informal email group to swap ideas, and a directory so you can find other relevant organisations on the continent.",
+  "main": "spreadsheet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dibwe243/techAfrica.git"
+  },
+  "author": "Lucas Mohale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dibwe243/techAfrica/issues"
+  },
+  "homepage": "https://github.com/Dibwe243/techAfrica#readme",
+  "dependencies": {
+    "google-spreadsheet": "^2.0.6",
+  }
+}
