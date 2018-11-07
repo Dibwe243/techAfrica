@@ -4,8 +4,6 @@ var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('./client_secret.json');
 var db = require('../modules');
 
-
-
 // Create a document object using the ID of the spreadsheet - obtained from its URL.
 var doc = new GoogleSpreadsheet('1eylj7cJYaUQiNJVS98Ce0OWzIZNEn69W1ugxNU6mO40');
 
@@ -16,7 +14,7 @@ doc.useServiceAccountAuth(creds, function (err) {
 doc.getRows(1, async function (err, rows) {
 
     for(var i = 1; i<rows.length; i++){
-        var data = {};
+        var data = {}
 
         data.last_name = rows[i].last_name;
         data.first_name = rows[i].first_name;
@@ -26,7 +24,7 @@ doc.getRows(1, async function (err, rows) {
         var jsonData = JSON.stringify(data);
         console.log(jsonData);
        
-        await db.create(jsonData)
+        await db.create(data)
         .then(data=>{
             console.log('data saved ', data);
         })
@@ -43,6 +41,5 @@ route.get('/display', function(req, res){
     db.find()
     .then(data => res.send(data));
 });
-
 
 module.exports = route;
