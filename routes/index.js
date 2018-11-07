@@ -2,7 +2,7 @@ var express = require('express');
 var router  = express.Router();
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('./client_secret.json');
-//var db = require('../models');
+var db = require('../modules');
 
 
 
@@ -18,6 +18,17 @@ doc.getRows(1, function (err, rows) {
     console.log(rows.length);
 });
 });
+
+router.get('/display', function(req, res){
+db.find()
+.then(data => res.send(data))
+
+// .catch(err =>{
+//   console.log('something went wrong');
+//   res.send(err)
+// })
+});
+
 
 
 module.exports = router;

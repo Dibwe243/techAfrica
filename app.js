@@ -4,5 +4,7 @@ var server = require('http').Server(app);
 var db = require('./routes');
 
 
+app.use('/user', db);
+
 server = app.listen(process.env.PORT || 5151);
 console.log('sever 5151 is up')
