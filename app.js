@@ -1,8 +1,9 @@
 var express = require('express');
 var app = express();
-var server = require('http').Server(app);
+var server;
 var db = require('./routes');
 
 
-server = app.listen(process.env.PORT || 5151);
+app.use('/user', db)
+server = app.listen(3553);
 console.log('sever 5151 is up')
