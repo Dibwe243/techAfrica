@@ -5,7 +5,7 @@ var creds = require('./client_secret.json');
 var db = require('../modules');
 
 // Create a document object using the ID of the spreadsheet - obtained from its URL.
-var doc = new GoogleSpreadsheet('1eylj7cJYaUQiNJVS98Ce0OWzIZNEn69W1ugxNU6mO40');
+var doc = new GoogleSpreadsheet('12VI1CKd2Q4Ep8qtvv-5EdQyv9hrmvFYjKTYgGlpouxY');
 
 // Authenticate with the Google Spreadsheets API.
 doc.useServiceAccountAuth(creds, function (err) {
@@ -14,15 +14,17 @@ doc.useServiceAccountAuth(creds, function (err) {
 doc.getRows(1, async function (err, rows) {
 
     for(var i = 1; i<rows.length; i++){
-        var data = {}
 
-        data.last_name = rows[i].last_name;
-        data.first_name = rows[i].first_name;
-        data.birthday = rows[i].birthday;
-        data.gender = rows[i].gender;
+        var data = {};
 
-        var jsonData = JSON.stringify(data);
-        console.log(jsonData);
+        data.id = rows[i].id
+        data.lastname = rows[i].lastname
+        data.firstname = rows[i].firstname
+        data.birthday = rows[i].birthday
+        data.gender = rows[i].gender
+        data.type = rows[i].type
+
+        jsonData = JSON.stringify(data);
        
         await db.create(data)
         .then(data=>{
@@ -32,8 +34,11 @@ doc.getRows(1, async function (err, rows) {
             console.log('Oops something went wrong ', err);
         });
     }
-    console.log(rows[0].party);
-    console.log(rows.length);
+
+
+    
+    // console.log(rows[0]);
+    // console.log(rows.length);
     });
 });
 
@@ -41,5 +46,7 @@ route.get('/display', function(req, res){
     db.find()
     .then(data => res.send(data));
 });
+
+
 
 module.exports = route;
