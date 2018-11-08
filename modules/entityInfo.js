@@ -1,16 +1,13 @@
 var mongoose = require('mongoose');
-mongoose.set('debug', true);
-mongoose.connect('mongodb://localhost:27017/techAfricaDB', {useNewUrlParser: true});
+
+
 mongoose.Promise = Promise;
 
 var entityInfo = new mongoose.Schema({
-    id:{
-        type:Number,
-        unique:true
-    },
 
     lastname:{
-        type: String
+        type: String,
+        required:true
     },
     firstname:{
         type: String
