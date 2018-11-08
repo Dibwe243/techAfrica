@@ -6,14 +6,15 @@ var assert = require('assert');
 
 var url = 'mongodb://localhost:27017/newdata';
 
-//post route for sending data from the old unsorted database to the new sorted data with data accepted by adamin
+//post route for sending data from the old unsorted database to
+//the new sorted data with data accepted by adamin
 
 router.post('/delete', function(req, res,next){
   var id = req.body.id;
 
   mongo.connect(url, function(err,db){
     assert.equal(null,err);
-    db.collection('techAfrica-data').deleteOne({"_id": objectId(id)}), function(err, res){
+    db.collection('techAfrica-data').deleteOne({"_id": objectId(id)}, function(err, res){
       assert.equal(null, err);
       console.log('Item deleted');
       db.close();
