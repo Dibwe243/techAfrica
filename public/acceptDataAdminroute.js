@@ -27,7 +27,7 @@ router.post('/approval', function(req, res){
 
   mongo.connect(url, function(err,db){
     assert.equal(null,err);
-    db.collection('techAfrica-data').addOne({"_id": objectId(id)}), function(err, res){
+    db.collection('techAfrica-data').addOne({"_id": objectId(id)}, function(err, res){
       assert.equal(null, err);
       console.log('Item added');
       db.close();
