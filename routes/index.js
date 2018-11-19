@@ -47,11 +47,11 @@ route.get('/display', function(req, res){
     .then(data => res.send(data));
 });
 
+//this is in order to display the approved data
 route.get('/display/approved', function(req, res){
     db.collection.find({status:"approved"})
     .then(data => res.send(data));
 });
-
 
 
 module.exports = route;
