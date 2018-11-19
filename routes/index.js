@@ -25,7 +25,7 @@ doc.getRows(1, async function (err, rows) {
         data.type = rows[i].type
 
         jsonData = JSON.stringify(data);
-       
+
         await db.create(data)
         .then(data=>{
             console.log('data saved ', data);
@@ -36,7 +36,7 @@ doc.getRows(1, async function (err, rows) {
     }
 
 
-    
+
     // console.log(rows[0]);
     // console.log(rows.length);
     });
@@ -45,6 +45,11 @@ doc.getRows(1, async function (err, rows) {
 route.get('/display', function(req, res){
     db.find()
     .then(data => res.send(data));
+});
+
+route.get('/display/approved', function(req, res){
+    db.collection.find({status:"approved"})
+    .then(data => res.send(data))
 });
 
 
