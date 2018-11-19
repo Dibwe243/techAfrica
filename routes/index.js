@@ -49,7 +49,7 @@ route.get('/display', function(req, res){
 
 route.get('/display/approved', function(req, res){
     db.collection.find({status:"approved"})
-    .then(data => res.send(data))
+    .then(data => res.send(data));
 });
 
 
