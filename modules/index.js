@@ -5,8 +5,7 @@ mongoose.Promise = Promise;
 
 var entityInfo = new mongoose.Schema({
     id:{
-        type:Number,
-        unique:true
+        type:Number
     },
 
     lastname:{
