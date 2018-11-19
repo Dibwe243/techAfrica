@@ -6,4 +6,4 @@ var db = require('./routes');
 
 app.use('/user', db)
 server = app.listen(5955);
-console.log('sever 5151 is up')
+console.log('sever 5955 is up')

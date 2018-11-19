@@ -16,7 +16,7 @@ route.get('/update', async function(re, res){
     // Get all of the rows from the spreadsheet.
     doc.getRows(1, async function (err, rows) {
     
-        for(var i = 1; i<rows.length; i++){
+        for(var i = 0; i<rows.length; i++){
     
             var data = {};
     
@@ -28,23 +28,20 @@ route.get('/update', async function(re, res){
             data.type = rows[i].type
     
             jsonData = JSON.stringify(data);
-            db.findOne({id: data.id}, async function(err, found){
-                if(!found){
-    
+            // db.findOne({id: data.id}, async function(err, found){
+            //     if(err || found){
+
+            //          console.log('ID already exists ', err);
+            //      }
+            //      else{
                     await db.create(data)
                     .then(data=>{
                         console.log('data saved ', data);
                     })
                     .catch(err=>{
-                        console.log('Oops something went wrong ', err);
+                        console.log('Data already exist');
                     });
                  }
-                 else{
-                     console.log('ID already exists ', err);
-                 }
-            });
-           
-        }
     
         
         // console.log(rows[0]);
@@ -61,8 +58,7 @@ route.get('/display', function(req, res){
 route.get('/deleteAll', async function(req,res){
     db.remove()
     .then(data => res.send(data));
-})
-
+});
 
 
 module.exports = route;

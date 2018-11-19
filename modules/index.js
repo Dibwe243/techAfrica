@@ -4,8 +4,10 @@ mongoose.connect('mongodb://localhost:27017/techAfricaDB', {useNewUrlParser: tru
 mongoose.Promise = Promise;
 
 var entityInfo = new mongoose.Schema({
+
     id:{
-        type:Number
+        type: Number,
+        unique: true
     },
 
     lastname:{
