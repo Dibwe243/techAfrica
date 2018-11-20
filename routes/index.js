@@ -60,5 +60,14 @@ route.get('/deleteAll', async function(req,res){
     .then(data => res.send(data));
 });
 
+route.get('/display', function(req, res){
+db.find()
+.then(data => res.send(data))
+
+// .catch(err =>{
+//   console.log('something went wrong');
+//   res.send(err)
+// })
+});
 
 module.exports = route;
