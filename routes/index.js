@@ -15,18 +15,18 @@ route.get('/update', async function(re, res){
 
     // Get all of the rows from the spreadsheet.
     doc.getRows(1, async function (err, rows) {
-    
+
         for(var i = 0; i<rows.length; i++){
-    
+
             var data = {};
-    
+
             data.id = rows[i].id
             data.lastname = rows[i].lastname
             data.firstname = rows[i].firstname
             data.birthday = rows[i].birthday
             data.gender = rows[i].gender
             data.type = rows[i].type
-    
+
             jsonData = JSON.stringify(data);
             // db.findOne({id: data.id}, async function(err, found){
             //     if(err || found){
@@ -42,8 +42,8 @@ route.get('/update', async function(re, res){
                         console.log('Data already exist');
                     });
                  }
-    
-        
+
+
         // console.log(rows[0]);
         // console.log(rows.length);
         });
@@ -60,14 +60,10 @@ route.get('/deleteAll', async function(req,res){
     .then(data => res.send(data));
 });
 
-route.get('/display', function(req, res){
-db.find()
-.then(data => res.send(data))
-
-// .catch(err =>{
-//   console.log('something went wrong');
-//   res.send(err)
-// })
+//this is in order to display the approved data
+route.get('/display/approved', function(req, res){
+    db.collection.find({status:"approved"})
+      .then(data => res.send(data);
 });
 
 module.exports = route;
