@@ -27,7 +27,7 @@ var entityInfo = new mongoose.Schema({
     },
     status:{
         type: String,
-        default: pending
+        default: 'pending'
     }
 })
 
