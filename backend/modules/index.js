@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.set('debug', true);
-mongoose.connect('mongodb://localhost:27017/techAfricaDB', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:27017/techAfricaDB2', {useNewUrlParser: true});
 mongoose.Promise = Promise;
 
 var entityInfo = new mongoose.Schema({
@@ -10,24 +10,44 @@ var entityInfo = new mongoose.Schema({
         unique: true
     },
 
-    lastname:{
+    DateSubmitted:{
         type: String
     },
-    firstname:{
+
+    Country:{
         type: String
     },
-    birthday:{
+
+    OrganisationEmail:{
         type: String
     },
-    gender:{
+    OrganisationName:{
         type: String
     },
-    type:{
+    
+    Features:{
         type: String
     },
-    status:{
+
+    Website:{
         type: String,
-        default: 'pending'
+    },
+
+    CoursesOffered:{
+        type: String,
+    },
+
+    PersonsContactEmail :{
+        type: String,
+    },
+
+    AgeGroups:{
+        type: String,
+    },
+
+    Status:{
+        type: String,
+        default: 'Pending'
     }
 })
 

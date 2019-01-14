@@ -5,7 +5,7 @@ var creds = require('./client_secret.json');
 var db = require('../modules');
 
 // Create a document object using the ID of the spreadsheet - obtained from its URL.
-var doc = new GoogleSpreadsheet('12VI1CKd2Q4Ep8qtvv-5EdQyv9hrmvFYjKTYgGlpouxY');
+var doc = new GoogleSpreadsheet('1aEE9V4e-wCxq8jA7aJ9Hvpz0HhL1OJpf4TSaeopDZMs');
 
 
 route.get('/update', async function(re, res){
@@ -21,20 +21,19 @@ route.get('/update', async function(re, res){
             var data = {};
 
             data.id = rows[i].id
-            data.lastname = rows[i].lastname
-            data.firstname = rows[i].firstname
-            data.birthday = rows[i].birthday
-            data.gender = rows[i].gender
-            data.type = rows[i].type
+            data.DateSubmitted = rows[i].DateSubmitted
+            data.Country = rows[i].Country
+            data.OrganisationEmail = rows[i].OrganisationEmail
+            data.OrganisationName = rows[i].OrganisationName
+            data.Features = rows[i].Features
+            data.Website = rows[i].Website
+            data.CoursesOffered = rows[i].CoursesOffered
+            data.PersonsContactEmail = rows[i].PersonsContactEmail
+            data.AgeGroups = rows[i].AgeGroups
 
             jsonData = JSON.stringify(data);
-            // db.findOne({id: data.id}, async function(err, found){
-            //     if(err || found){
-
-            //          console.log('ID already exists ', err);
-            //      }
-            //      else{
-                    await db.create(data)
+           
+                     db.create(data)
                     .then(data=>{
                         console.log('data saved ', data);
                     })
@@ -44,8 +43,8 @@ route.get('/update', async function(re, res){
                  }
 
 
-        // console.log(rows[0]);
-        // console.log(rows.length);
+         console.log(rows[0]);
+         console.log(rows.length);
         });
     });
 })
@@ -63,7 +62,7 @@ route.get('/deleteAll', async function(req,res){
 //this is in order to display the approved data
 route.get('/display/approved', function(req, res){
     db.collection.find({status:"approved"})
-      .then(data => res.send(data);
+      .then(data => res.send(data))
 });
 
 
