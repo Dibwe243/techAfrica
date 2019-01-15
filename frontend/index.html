@@ -153,10 +153,10 @@ body {
   <div class="left" style="background-color:#aaa;">
     <div id="myBtnContainer">
       <ul style="list-style-type:none">
-  <li>  <button class="btn active" onclick="filterSelection('ALL')">SHOW ALL</button></li>
-    <li>    <button class="btn" onclick="filterSelection('PENDING')">PENDING</button></li>
-        <li><button class="btn" onclick="filterSelection('ACCEPTED')">ACCEPTED</button></li>
-        <li><button class="btn" onclick="filterSelection('REJECTED')"> REJECTED</button></li>
+  <li>  <button class="btn active" onclick="display()">SHOW ALL</button></li>
+    <li>    <button class="btn" onclick="pending()">PENDING</button></li>
+        <li><button class="btn" onclick="approved()">ACCEPTED</button></li>
+        <li><button class="btn" onclick="rejected()"> REJECTED</button></li>
 
         </ul>
     </div>
@@ -164,6 +164,8 @@ body {
 
 
   <div class="middle "  align="center" style="background-color:#bbb;">
+
+    
     <div id="entry">members</div>
 
 

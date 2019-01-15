@@ -56,7 +56,7 @@ route.get('/display', function(req, res){
 });
 
 //display approved data
-route.get('/appoved', function(req, res){
+route.get('/approved', function(req, res){
     db.find({Status:"approved"})
       .then(data => res.send(data))
 });
@@ -79,6 +79,20 @@ route.get('/deleteAll', function(req,res){
     .then(data => res.send(data));
 });
 
+//Approve data
+route.post('/UpdateApprove', function(req, res){
+    var id = req.body.id;
+    db.update({id: id}, {$set:{Status:"approved"}})
+      .then(data => res.send(data))
+});
+
+
+//Reject Data
+route.post('/UpdateReject', function(req, res){
+    var id = req.body.id;
+    db.update({id: id}, {$set:{Status:"rejected"}})
+      .then(data => res.send(data))
+});
 
 
 

@@ -1,5 +1,9 @@
 var express = require('express');
 var app = express();
+var bodyPerser = require("body-parser");
+
+app.use(bodyPerser.json());
+app.use(bodyPerser.urlencoded({extended: true}));
 var server;
 var db = require('./backend/routes');
 
