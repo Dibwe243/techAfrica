@@ -21,19 +21,19 @@ route.get('/update', async function(re, res){
             var data = {};
 
             data.id = rows[i].id
-            data.DateSubmitted = rows[i].DateSubmitted
-            data.Country = rows[i].Country
-            data.OrganisationEmail = rows[i].OrganisationEmail
-            data.OrganisationName = rows[i].OrganisationName
-            data.Features = rows[i].Features
-            data.Website = rows[i].Website
-            data.CoursesOffered = rows[i].CoursesOffered
-            data.PersonsContactEmail = rows[i].PersonsContactEmail
-            data.AgeGroups = rows[i].AgeGroups
+            data.datesubmitted = rows[i].datesubmitted
+            data.country = rows[i].country
+            data.organisationemail = rows[i].organisationemail
+            data.organisationame = rows[i].organisationame
+            data.features = rows[i].features
+            data.website = rows[i].website
+            data.coursesoffered = rows[i].coursesoffered
+            data.personscontactemail = rows[i].personscontactemail
+            data.agegroups = rows[i].agegroups
 
             jsonData = JSON.stringify(data);
            
-                     db.create(data)
+                     await db.create(data)
                     .then(data=>{
                         console.log('data saved ', data);
                     })
@@ -54,8 +54,8 @@ route.get('/display', function(req, res){
     .then(data => res.send(data));
 });
 
-route.get('/deleteAll', async function(req,res){
-    db.remove()
+route.get('/deleteAll', function(req,res){
+    db.deleteMany()
     .then(data => res.send(data));
 });
 
