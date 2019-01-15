@@ -49,21 +49,37 @@ route.get('/update', async function(re, res){
     });
 })
 
+//display all data
 route.get('/display', function(req, res){
     db.find()
     .then(data => res.send(data));
 });
+
+//display approved data
+route.get('/appoved', function(req, res){
+    db.find({Status:"approved"})
+      .then(data => res.send(data))
+});
+
+//display rejected data
+route.get('/rejected', function(req, res){
+    db.find({Status:"rejected"})
+      .then(data => res.send(data))
+});
+
+//display pending data
+route.get('/pending', function(req, res){
+    db.find({Status:"pending"})
+      .then(data => res.send(data))
+});
+
 
 route.get('/deleteAll', function(req,res){
     db.deleteMany()
     .then(data => res.send(data));
 });
 
-//this is in order to display the approved data
-route.get('/display/approved', function(req, res){
-    db.collection.find({status:"approved"})
-      .then(data => res.send(data))
-});
+
 
 
 

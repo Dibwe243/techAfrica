@@ -29,7 +29,7 @@ var entityInfo = new mongoose.Schema({
         type: String
     },
 
-    Website:{
+    website:{
         type: String,
     },
 
@@ -47,7 +47,7 @@ var entityInfo = new mongoose.Schema({
 
     Status:{
         type: String,
-        default: 'Pending'
+        default: 'pending'
     },
 })
 
