@@ -21,19 +21,19 @@ route.get('/update', async function(re, res){
             var data = {};
 
             data.id = rows[i].id
-            data.DateSubmitted = rows[i].DateSubmitted
-            data.Country = rows[i].Country
-            data.OrganisationEmail = rows[i].OrganisationEmail
-            data.OrganisationName = rows[i].OrganisationName
-            data.Features = rows[i].Features
-            data.Website = rows[i].Website
-            data.CoursesOffered = rows[i].CoursesOffered
-            data.PersonsContactEmail = rows[i].PersonsContactEmail
-            data.AgeGroups = rows[i].AgeGroups
+            data.datesubmitted = rows[i].datesubmitted
+            data.country = rows[i].country
+            data.organisationemail = rows[i].organisationemail
+            data.organisationame = rows[i].organisationame
+            data.features = rows[i].features
+            data.website = rows[i].website
+            data.coursesoffered = rows[i].coursesoffered
+            data.personscontactemail = rows[i].personscontactemail
+            data.agegroups = rows[i].agegroups
 
             jsonData = JSON.stringify(data);
            
-                     db.create(data)
+                     await db.create(data)
                     .then(data=>{
                         console.log('data saved ', data);
                     })
@@ -49,21 +49,37 @@ route.get('/update', async function(re, res){
     });
 })
 
+//display all data
 route.get('/display', function(req, res){
     db.find()
     .then(data => res.send(data));
 });
 
-route.get('/deleteAll', async function(req,res){
-    db.remove()
+//display approved data
+route.get('/appoved', function(req, res){
+    db.find({Status:"approved"})
+      .then(data => res.send(data))
+});
+
+//display rejected data
+route.get('/rejected', function(req, res){
+    db.find({Status:"rejected"})
+      .then(data => res.send(data))
+});
+
+//display pending data
+route.get('/pending', function(req, res){
+    db.find({Status:"pending"})
+      .then(data => res.send(data))
+});
+
+
+route.get('/deleteAll', function(req,res){
+    db.deleteMany()
     .then(data => res.send(data));
 });
 
-//this is in order to display the approved data
-route.get('/display/approved', function(req, res){
-    db.collection.find({status:"approved"})
-      .then(data => res.send(data))
-});
+
 
 
 
