@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Dibwe243/techAfrica#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "google-spreadsheet": "^2.0.6",
     "mongoose": "^5.3.9"
