@@ -2,29 +2,65 @@ function display(){
     fetch('http://localhost:5955/user/display')
     .then(res => res.json())
     .then(res => res.map(user => user))
-.then(userNames => document.getElementById("entry").innerHTML = userNames.map(data=>`${data.datesubmitted} ${data.country} ${data.organisationemail} ${data.organisationame} ${data.feature} ${data.feature} ${data.id} <button onclick="UpdateApprove(${data.id})">Accept</button>  <button onclick="UpdateReject(${data.id})">Reject</button><br>`).join(''));
-} 
+.then(userNames =>{
+var entryName = "<tr><th>Date Submitted</th> <th>Country</th> <th>Organisation</th> <th>Accept</th><th>Rejected</th></tr>"
+  entryName += userNames.map(data=>`<tr> <td>${data.datesubmitted}</td>
+    <td> ${data.country}</td>
+    ${data.organisationemail}
+    <td> ${data.organisationame}</td> ${data.id}
+    <td><button class="accept" onclick="UpdateApprove(${data.id})">Accept</button> </td>
+    <td> <button class="reject" onclick="UpdateReject(${data.id})">Reject</button><br></td></tr>`).join('')
+document.getElementById("entry").innerHTML = entryName;
+
+});
+}
 
 function pending(){
     fetch('http://localhost:5955/user/pending')
     .then(res => res.json())
     .then(res => res.map(user => user))
-.then(userNames => document.getElementById("entry").innerHTML = userNames.map(data=>`${data.datesubmitted} ${data.country} ${data.organisationemail} ${data.organisationame} ${data.feature} ${data.feature} <button onclick="UpdateApprove(${data.id})">Accept</button>  <button onclick="UpdateReject(${data.id})">Reject</button><br>`).join(''));
-} 
+.then(userNames =>{
+  var entryName ="<tr><th>Date Submitted</th> <th>Country</th> <th>Organisation</th> <th>Accept</th><th>Rejected</th></tr>"
+entryName += userNames.map(data=>`<tr><td>${data.datesubmitted}</td>
+  <td> ${data.country}</td>
+  ${data.organisationemail}
+  <td> ${data.organisationame}</td>${data.id}
+  <td> <button onclick="UpdateApprove(${data.id})">Accept</button></td>
+  <td> <button onclick="UpdateReject(${data.id})">Reject</button><br><td></tr>`).join('')
+document.getElementById("entry").innerHTML = entryName;
+});
+}
 
 function approved(){
     fetch('http://localhost:5955/user/approved')
     .then(res => res.json())
     .then(res => res.map(user => user))
-.then(userNames => document.getElementById("entry").innerHTML = userNames.map(data=>`${data.datesubmitted} ${data.country} ${data.organisationemail} ${data.organisationame} ${data.feature} ${data.feature} <button onclick="UpdateReject(${data.id})">Reject</button><br>`).join(''));
-} 
+.then(userNames =>{
+  var entryName = "<tr><th>Date Submitted</th> <th>Country</th> <th>Organisation</th> <th>Reject</th></tr>"
+entryName += userNames.map(data=>`<tr><td>${data.datesubmitted} </td>
+  <td>${data.country}</td>
+  ${data.organisationemail}
+  <td>${data.organisationame} </td>
+
+  <td> <button onclick="UpdateReject(${data.id})">Reject</button><br></td></tr>`).join('')
+   document.getElementById("entry").innerHTML = entryName;
+});
+}
 
 function rejected(){
     fetch('http://localhost:5955/user/rejected')
     .then(res => res.json())
     .then(res => res.map(user => user))
-.then(userNames => document.getElementById("entry").innerHTML = userNames.map(data=>`${data.datesubmitted} ${data.country} ${data.organisationemail} ${data.organisationame} ${data.feature} ${data.feature} <button onclick="UpdateApprove(${data.id})">Accept</button>  <br>`).join(''));
-} 
+.then(userNames => {
+var entryName = "<tr><th>Date Submitted</th> <th>Country</th> <th>Organisation</th> <th>Accept</th></tr>"
+entryName += userNames.map(data=>`<tr><td>${data.datesubmitted} </td>
+  <td>${data.country}</td>
+   ${data.organisationemail}
+   <td>${data.organisationame}</td>
+    <td><button onclick="UpdateApprove(${data.id})">Accept</button>  <br></td></tr>`).join('')
+  document.getElementById("entry").innerHTML = entryName;
+});
+}
 
 
 
@@ -42,7 +78,7 @@ function UpdateApprove(id){
         fetch('http://localhost:5955/user/UpdateApprove', options)
         .then(res => res.json())
         .then(res => console.log(res));
-} 
+}
 
 
 function UpdateReject(id){
@@ -59,4 +95,4 @@ function UpdateReject(id){
         fetch('http://localhost:5955/user/UpdateReject', options)
         .then(res => res.json())
         .then(res => console.log(res));
-} 
+}

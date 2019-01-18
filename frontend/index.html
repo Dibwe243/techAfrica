@@ -1,184 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-* {
-  box-sizing: border-box;
-}
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
-/* Style the header */
-.header {
-  grid-area: header;
-  background-color: #f1f1f1;
-  padding: 30px;
-  text-align: Left;
-  font-size: 35px;
-}
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-/* The grid container */
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    'header header header header header header'
-    'left left middle middle middle middle'
-    'footer footer footer footer footer footer';
-  /* grid-column-gap: 10px; - if you want gap between the columns */
-}
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
-.left,
-.middle,
-.right {
-  padding: 10px;
-  height: 100%; /* Should be removed. Only for demonstration */
-}
-
-/* Style the left column */
-.left {
-  grid-area: left;
-}
-
-/* Style the middle column */
-.middle {
-  grid-area: middle;
-}
-
-/* Style the right column */
-
-
-/* Style the footer */
-.footer {
-  grid-area: footer;
-  background-color: #f1f1f1;
-  padding: 10px;
-  text-align: center;
-}
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  .grid-container  {
-    grid-template-areas:
-      'header header header header header header'
-      'left left left left left left'
-      'middle middle middle middle middle middle'
-
-      'footer footer footer footer footer footer';
-  }
-}
-/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
-.accordion {
-  background-color: #eee;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 75%;
-  border: none;
-  text-align: center;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
-}
-
-.active, .accordion:hover {
-  background-color: #ccc;
-}
-
-.accordion:after {
-  content: '\002B';
-  color: #777;
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
-
-.active:after {
-  content: "\2212";
-}
-
-.panel {
-  padding: 0 18px;
-  background-color: white;
-  width:75%;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-}
-
-.accordionSpacing.panel-group .panel + .panel {
-           margin-top: 5px; /* solution with margins */
-       }
-/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-#myInput {
-  background-image: url('search3.png');
-  background-position: 10px 12px;
-  background-repeat: no-repeat;
-  width: 70%;
-  font-size: 16px;
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-}
-
-
-
-
-
-
-</style>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="style.css">
 </head>
 
 
 
 <body onload="display()">
 
-  <div class="jumbotron">
-    <h1>Tech Africa</h1>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom box-shadow" style="color:white;">
+      <h3 class="my-0 mr-md-auto font-weight-normal font-weight-bold">TechAfrica</h3>
+    <!--  <nav class="my-2 my-md-0 mr-md-3" >
+        <a class="p-2 text-light" href="#">Home</a>
+        <a class="p-2 text-light" href="#">Directory</a>
+        <a class="p-2 text-light" href="#">Contact</a>
 
-  </div>
-
-
-<div align="center">  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"></div>
-
-<div class="grid-container">
-
-
-  <div class="left" style="background-color:#aaa;">
-    <div id="myBtnContainer">
-      <ul style="list-style-type:none">
-  <li>  <button class="btn active" onclick="display()">SHOW ALL</button></li>
-    <li>    <button class="btn" onclick="pending()">PENDING</button></li>
-        <li><button class="btn" onclick="approved()">ACCEPTED</button></li>
-        <li><button class="btn" onclick="rejected()"> REJECTED</button></li>
-
-        </ul>
+      </nav>-->
+      <button class="btn btn-outline-success my-2 my-sm-0"  type="submit" onclick="display()">Update List</button>
+    <!--  <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>-->
     </div>
-  </div>
+
+    <div class="container-fluid">
+          <div class="row">
+            <nav class="col-md-2 d-none d-md-block sidebar">
+              <div class="sidebar-sticky">
+
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                  <button type="button" class="btn btn-info" onclick="display()">Show All</button>
+                  </li>
+                  <li class="nav-item">
+                    <button type="button" class="btn btn-info" onclick="pending()">Pending</button>
+                  </li>
+                  <li class="nav-item">
+                    <button type="button" class="btn btn-info" onclick="approved()">Approved</button>
+                  </li>
+                  <li class="nav-item">
+                  <button type="button" class="btn btn-info" onclick="rejected()">Rejected</button>
+                  </li>
 
 
-  <div class="middle "  align="center" style="background-color:#bbb;">
-
-    
-    <div id="entry">members</div>
+                </ul>
 
 
-  </div>
+              </div>
+            </nav>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-1 px-1">
+<h1>Members</h1>
+<table id="entry">
+
+</table>
 
 
-  <div class="footer">
-    <p>Footer</p>
-  </div>
+
+          </div>
+        </main>
 </div>
 
-
-
+<footer class="footer">
+      <div class="container">
+        <span class="text-white">28 MADISON STREET , JOHANNESBURG, GP, 2094, SOUTH AFRICAINFO@UMUZI.ORG </span>
+      </div>
+    </footer>
 
 </body>
 <script src="main.js"></script>
