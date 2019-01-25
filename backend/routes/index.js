@@ -97,40 +97,41 @@ route.post('/UpdateReject', function(req, res){
 ////////////////////////////////////////////////////////////////////////////////
 
 // public page filter for south africa
-route.get('/southafrica', function(req, res){
-    db.find({country:"South Africa"})
-      .then(data => res.send(data))
+route.post('/country', function(req, res){
+  var country = req.body.country;
+    db.find({country:country, Status:"approved"})
+    .then(data => {
+      console.log('we are on')
+      res.send(data)
+    })
 });
 
 // public page filter for nigeria
-route.get('/nigeria', function(req, res){
-    db.find({country:"Nigeria"})
-      .then(data => res.send(data))
-});
 
-// public page filter for rwanda
-route.get('/rwanda', function(req, res){
-    db.find({country:"Rwanda"})
-      .then(data => res.send(data))
-});
-
-// public page filter for ghana
-route.get('/ghana', function(req, res){
-    db.find({country:"Ghana"})
-      .then(data => res.send(data))
-});
-
-// public page filter for malawi
-route.get('/malawi', function(req, res){
-    db.find({country:"Malawi"})
-      .then(data => res.send(data))
-});
-
-// public page filter for mauritius
-route.get('/mauritius', function(req, res){
-    db.find({country:"Mauritius"})
-      .then(data => res.send(data))
-});
+//
+// // public page filter for rwanda
+// route.get('/rwanda', function(req, res){
+//     db.find({country:"Rwanda"})
+//       .then(data => res.send(data))
+// });
+//
+// // public page filter for ghana
+// route.get('/ghana', function(req, res){
+//     db.find({country:"Ghana"})
+//       .then(data => res.send(data))
+// });
+//
+// // public page filter for malawi
+// route.get('/malawi', function(req, res){
+//     db.find({country:"Malawi"})
+//       .then(data => res.send(data))
+// });
+//
+// // public page filter for mauritius
+// route.get('/mauritius', function(req, res){
+//     db.find({country:"Mauritius"})
+//       .then(data => res.send(data))
+// });
 
 
 module.exports = route;

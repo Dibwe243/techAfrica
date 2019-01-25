@@ -19,14 +19,16 @@ var entityInfo = new mongoose.Schema({
     },
 
     organisationemail:{
-        type: String
+        type: String,
+        default: "Unknown"
     },
     organisationame:{
         type: String
     },
-    
+
     features:{
-        type: String
+        type: String,
+        default: "Unknown"
     },
 
     website:{
