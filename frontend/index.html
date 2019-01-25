@@ -20,15 +20,15 @@
 
 <body onload="display()">
 
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom box-shadow" style="color:white;">
-      <h3 class="my-0 mr-md-auto font-weight-normal font-weight-bold">TechAfrica</h3>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-dark border-bottom box-shadow" style="color:green;">
+      <h3 class="my-0 mr-md-auto font-weight-normal">Admin</h3>
     <!--  <nav class="my-2 my-md-0 mr-md-3" >
         <a class="p-2 text-light" href="#">Home</a>
         <a class="p-2 text-light" href="#">Directory</a>
         <a class="p-2 text-light" href="#">Contact</a>
 
       </nav>-->
-      <button class="btn btn-outline-success my-2 my-sm-0"  type="submit" onclick="display()">Update List</button>
+      <button class="btn btn-outline-success my-2 my-sm-0"  type="button" onclick="Refresh()">Update List</button>
     <!--  <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -37,21 +37,21 @@
 
     <div class="container-fluid">
           <div class="row">
-            <nav class="col-md-2 d-none d-md-block sidebar">
+            <nav class="col-md-2 d-none d-md-block sidebar" id="sticky-sidebar">
               <div class="sidebar-sticky">
 
-                <ul class="nav flex-column">
+                <ul class="nav flex-column" id="sticky-sidebar">
                   <li class="nav-item">
-                  <button type="button" class="btn btn-info" onclick="display()">Show All</button>
+                  <button type="button" class="btn btn-success" onclick="display()">View All Entries</button>
                   </li>
                   <li class="nav-item">
-                    <button type="button" class="btn btn-info" onclick="pending()">Pending</button>
+                    <button type="button" class="btn btn-success" onclick="pending()">View Pendding Entries</button>
                   </li>
                   <li class="nav-item">
-                    <button type="button" class="btn btn-info" onclick="approved()">Approved</button>
+                    <button type="button" class="btn btn-success" onclick="approved()">View Approved Entries</button>
                   </li>
                   <li class="nav-item">
-                  <button type="button" class="btn btn-info" onclick="rejected()">Rejected</button>
+                  <button type="button" class="btn btn-success" onclick="rejected()">View Rejected Entries</button>
                   </li>
 
 

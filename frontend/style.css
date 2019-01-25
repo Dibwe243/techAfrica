@@ -24,9 +24,47 @@ html {
     padding-right: 20px;
     padding-top: 20px;
     min-height: calc(100vh - 40px);
+    position: fixed;
 }
-table, th, td {
-  border: 0px solid black;
-  padding-bottom: 15px;
+
+
+
+#entry{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  border-collapse: collapse;
+  width: 100%;
 }
- 
+
+#entry td, #entry th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#entry tr:nth-child(even){background-color: #f2f2f2;}
+
+#entry tr:hover {background-color: #ddd;}
+
+#entry th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.rejectButton{
+  color: red;
+}
+.acceptButton{
+  color: green;
+}
+
+.btn{
+  margin-top: 19px;
+  min-width: 200px;
+}
+
+.nav{
+  margin-top: 20px;
+}
