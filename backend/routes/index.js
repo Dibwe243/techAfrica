@@ -5,7 +5,7 @@ var creds = require('./client_secret.json');
 var db = require('../modules');
 
 // Create a document object using the ID of the spreadsheet - obtained from its URL.
-var doc = new GoogleSpreadsheet('1aEE9V4e-wCxq8jA7aJ9Hvpz0HhL1OJpf4TSaeopDZMs');
+var doc = new GoogleSpreadsheet('19cmtlazupuSqPX4KACwPh1IyUTKOW1l1-GmgxD8_xaI');
 
 
 route.get('/update', async function(re, res){
