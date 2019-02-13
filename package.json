@@ -2,9 +2,9 @@
   "name": "techafrica",
   "version": "1.0.0",
   "description": "TechAfrica is an online community for organisations teaching coding + data science on the continent to share best practices and help develop the next generation of African tech talent. We host an informal email group to swap ideas, and a directory so you can find other relevant organisations on the continent.",
-  "main": "spreadsheet.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx pm2 start app.js --watch"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,8 @@
     "express": "^4.16.4",
     "google-spreadsheet": "^2.0.6",
     "mongoose": "^5.3.9"
+  },
+  "devDependencies": {
+    "pm2": "^2.10.3"
   }
 }

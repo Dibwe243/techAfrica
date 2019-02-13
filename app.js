@@ -1,17 +1,22 @@
 var express = require('express');
 var app = express();
-var bodyPerser = require("body-parser");
 
-app.use(bodyPerser.json());
-app.use(bodyPerser.urlencoded({extended: true}));
-var server;
-var db = require('./backend/routes');
+var GoogleSpreadsheet = require('google-spreadsheet');
+var creds = require('./client_secret.json');
+var doc = new GoogleSpreadsheet('19cmtlazupuSqPX4KACwPh1IyUTKOW1l1-GmgxD8_xaI');
 
-app.use(express.static(__dirname+'/frontend'));
-app.get('/', function(req,res){
-    res.sendFile('index3.html')
-})
+app.get('/',(req,res)=>{
+    doc.useServiceAccountAuth(creds, function (err) {
 
-app.use('/user', db)
-server = app.listen(5955);
-console.log('sever 5955 is up')
+        doc.getRows(1, function (err, rows) {
+            res.send(rows);        
+            });
+        });
+});
+      
+
+
+
+const server =app.listen(7000,()=>{
+    console.log(`Express running -PORT ${server.address().port}`);
+});
